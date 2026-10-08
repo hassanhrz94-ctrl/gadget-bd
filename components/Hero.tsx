@@ -10,14 +10,14 @@ import {
   Sparkles,
   Zap,
   CheckCircle2,
-  Headphones,
-  Watch,
-  BatteryCharging
+  MessageCircle,
+  Flame,
+  Sun
 } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
+import { SITE_CONFIG } from "@/config/site";
 
 interface HeroProps {
-  // You can replace this link with any hero photo link you wish
   heroImageSrc?: string;
 }
 
@@ -25,15 +25,19 @@ export function Hero({
   heroImageSrc = "https://i.ibb.co.com/YB9F3kjB/DSC02032.jpg",
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24">
-      {/* Subtle Background Glows and Shapes */}
+    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 bg-[#090A10] text-white">
+      {/* Dynamic Background Glows matching yellow/gold logo palette */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-emerald-200/40 via-teal-100/30 to-blue-200/40 blur-3xl rounded-full -z-10"
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-r from-[#FFD000]/15 via-amber-500/10 to-transparent blur-3xl rounded-full -z-10"
       />
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute top-1/2 -right-24 w-80 h-80 bg-emerald-100/40 blur-2xl rounded-full -z-10"
+        className="pointer-events-none absolute top-1/3 -right-20 w-96 h-96 bg-[#FFD000]/10 blur-3xl rounded-full -z-10"
+      />
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute bottom-0 left-10 w-72 h-72 bg-emerald-500/10 blur-3xl rounded-full -z-10"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,128 +46,155 @@ export function Hero({
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Small Store Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs sm:text-sm font-medium mb-6 shadow-xs animate-in fade-in duration-500">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Direct WhatsApp Ordering in Bangladesh</span>
+            {/* Speed & Best Price Announcement Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#FFD000]/30 text-xs sm:text-sm font-semibold mb-6 shadow-lg shadow-black/40 animate-in fade-in duration-500 backdrop-blur-md">
+              <Zap className="w-4 h-4 text-[#FFD000] fill-[#FFD000] animate-pulse" />
+              <span className="text-slate-200">Express Delivery in BD</span>
+              <span className="w-1 h-1 rounded-full bg-[#FFD000]" />
+              <span className="text-[#FFD000] font-bold">Best Price Guaranteed</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+            {/* Main Headline with Brand Yellow & Gold Accents */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
               Smart Gadgets.{" "}
-              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
-                Better Life.
+              <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD000] via-[#FBBF24] to-[#F59E0B] drop-shadow-[0_0_25px_rgba(255,208,0,0.3)]">
+                Best Price.
+              </span>
+              <span className="block mt-1 text-white">
+                Trusted Service.
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-5 text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed">
-              Discover useful, affordable and stylish gadgets from My Gadget BD.
-              Carefully tested electronics curated for your everyday convenience.
+            <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+              Discover authentic lifestyle electronics and mesmerizing ambient lighting gadgets from{" "}
+              <strong className="text-white font-bold">My <span className="text-[#FFD000]">Gadget</span> BD</strong>.
+              Personally tested for high quality, featuring instant WhatsApp ordering and Cash on Delivery across Bangladesh.
             </p>
 
             {/* Hero CTA Buttons */}
             <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 w-full sm:w-auto">
-              {/* Explore Products Button */}
+              {/* Primary Explore Products Button in Bright Brand Yellow */}
               <Link
                 href="/products"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold text-base shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#FFD000] hover:bg-[#ffe14d] active:bg-[#eab308] text-slate-950 font-extrabold text-base shadow-xl shadow-[#FFD000]/25 hover:shadow-[#FFD000]/40 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
               >
-                <span>Explore Products</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <span>Explore All Gadgets</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
               </Link>
 
-              {/* View Cart Button */}
-              <Link
-                href="/cart"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-base border border-slate-200 shadow-sm hover:shadow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 group"
+              {/* Instant WhatsApp Order Button */}
+              <a
+                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(
+                  "Hello My Gadget BD, I would like to order a gadget."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] active:bg-[#1caa51] text-white font-bold text-base shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
-                <ShoppingBag className="w-4 h-4 text-emerald-600 transition-colors group-hover:scale-110" />
-                <span>View Cart</span>
-              </Link>
+                <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
+                <span>WhatsApp: {SITE_CONFIG.whatsappDisplayNumber}</span>
+              </a>
             </div>
 
-            {/* Trust Highlights */}
-            <div className="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-3 gap-4 w-full text-slate-600">
+            {/* Trust Highlights Grid */}
+            <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-4 w-full text-slate-300">
               <div className="flex items-center gap-2.5">
-                <Truck className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Nationwide BD Delivery</span>
+                <div className="w-8 h-8 rounded-lg bg-[#FFD000]/10 flex items-center justify-center shrink-0 border border-[#FFD000]/20">
+                  <Truck className="w-4 h-4 text-[#FFD000]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-white">Express Delivery</div>
+                  <div className="text-[11px] text-slate-400">All 64 Districts</div>
+                </div>
               </div>
+
               <div className="flex items-center gap-2.5">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Authentic Quality</span>
+                <div className="w-8 h-8 rounded-lg bg-[#FFD000]/10 flex items-center justify-center shrink-0 border border-[#FFD000]/20">
+                  <ShieldCheck className="w-4 h-4 text-[#FFD000]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-white">100% Genuine</div>
+                  <div className="text-[11px] text-slate-400">Tested Quality</div>
+                </div>
               </div>
+
               <div className="flex items-center gap-2.5 col-span-2 sm:col-span-1">
-                <Zap className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Instant WhatsApp Order</span>
+                <div className="w-8 h-8 rounded-lg bg-[#25D366]/10 flex items-center justify-center shrink-0 border border-[#25D366]/20">
+                  <MessageCircle className="w-4 h-4 text-[#25D366] fill-[#25D366]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-white">Cash on Delivery</div>
+                  <div className="text-[11px] text-slate-400">Pay at Doorstep</div>
+                </div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Visual with floating micro-elements */}
+          {/* Right Column: Hero Visual Showcase */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             
-            {/* Visual Container */}
+            {/* Ambient Aura Frame */}
             <div className="relative w-full max-w-md lg:max-w-none">
               
-              {/* Soft ambient background aura */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 via-teal-400/20 to-blue-500/20 rounded-3xl blur-xl" />
+              {/* Outer Golden Glow */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#FFD000]/30 via-amber-500/20 to-purple-600/20 rounded-3xl blur-2xl opacity-75" />
 
-              {/* Card Container */}
-              <div className="relative bg-white rounded-3xl p-3 sm:p-4 shadow-2xl shadow-slate-900/10 border border-slate-100 overflow-hidden group">
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100">
+              {/* Glass Card Container */}
+              <div className="relative bg-[#11131E]/90 backdrop-blur-xl rounded-3xl p-3 sm:p-4 shadow-2xl border border-white/15 overflow-hidden group">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 border border-white/10">
                   <ImageWithFallback
                     src={heroImageSrc}
-                    alt="Featured Gadgets at My Gadget BD"
+                    alt="Featured RGB Halo Ring Lamp at My Gadget BD"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     priority
                   />
                   
                   {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Caption badge inside the image */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
-                    <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md font-medium flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                      Trending Gadgets 2026
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
+                    <span className="px-3 py-1.5 rounded-xl bg-black/75 backdrop-blur-md font-semibold text-white flex items-center gap-1.5 border border-white/15">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFD000]" />
+                      RGB Halo Ring Lamp
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-emerald-600/90 font-bold">
-                      Best Price in BD
+                    <span className="px-3 py-1.5 rounded-xl bg-[#FFD000] text-slate-950 font-black shadow-md shadow-[#FFD000]/30">
+                      ৳1,450 • In Stock
                     </span>
                   </div>
                 </div>
 
                 {/* Floating Micro-interaction Badges */}
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center">
-                    <Sparkles className="w-4 h-4 text-emerald-600 mb-1" />
-                    <span className="text-[11px] font-semibold text-slate-800">RGB Lamps</span>
-                    <span className="text-[9px] text-slate-400">Ambient Glow</span>
+                <div className="mt-3.5 grid grid-cols-3 gap-2 text-center">
+                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                    <Sparkles className="w-4 h-4 text-[#FFD000] mb-1" />
+                    <span className="text-[11px] font-bold text-white">RGB Ring</span>
+                    <span className="text-[9px] text-slate-400">Multi-Color</span>
                   </div>
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center">
-                    <Zap className="w-4 h-4 text-emerald-600 mb-1" />
-                    <span className="text-[11px] font-semibold text-slate-800">LED Lights</span>
-                    <span className="text-[9px] text-slate-400">Desk Decor</span>
+                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                    <Sun className="w-4 h-4 text-[#FFD000] mb-1" />
+                    <span className="text-[11px] font-bold text-white">Fiber Optic</span>
+                    <span className="text-[9px] text-slate-400">Crystal Flower</span>
                   </div>
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center">
-                    <Truck className="w-4 h-4 text-emerald-600 mb-1" />
-                    <span className="text-[11px] font-semibold text-slate-800">BD Delivery</span>
-                    <span className="text-[9px] text-slate-400">Cash on Delivery</span>
+                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                    <Flame className="w-4 h-4 text-[#FFD000] mb-1" />
+                    <span className="text-[11px] font-bold text-white">LED Candle</span>
+                    <span className="text-[9px] text-slate-400">Glass Cylinder</span>
                   </div>
                 </div>
 
               </div>
 
-              {/* Floating verified badge */}
-              <div className="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5" />
+              {/* Floating Verified Trust Badge */}
+              <div className="hidden sm:flex absolute -bottom-4 -left-4 bg-[#141624]/95 backdrop-blur-xl px-4 py-3 rounded-2xl shadow-xl border border-[#FFD000]/30 items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#FFD000] text-slate-950 flex items-center justify-center font-bold shadow-md shadow-[#FFD000]/30">
+                  <CheckCircle2 className="w-5 h-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-900">100% Genuine</p>
-                  <p className="text-[10px] text-slate-500">Official Warranty Support</p>
+                  <p className="text-xs font-black text-white">100% Genuine Gadgets</p>
+                  <p className="text-[10px] text-slate-400">Replacement Guarantee in BD</p>
                 </div>
               </div>
 

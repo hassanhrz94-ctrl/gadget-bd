@@ -11,15 +11,15 @@ export function FloatingWhatsApp() {
     <div className="fixed bottom-6 right-6 z-40 flex items-center gap-3">
       {/* Speech bubble / Tooltip for customer encouragement */}
       {!tooltipDismissed && (
-        <div className="hidden sm:flex items-center gap-2 bg-white px-3.5 py-2 rounded-2xl shadow-xl border border-slate-200/80 text-xs animate-in fade-in slide-in-from-right-4 duration-300">
+        <div className="hidden sm:flex items-center gap-2 bg-[#10121C]/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-2xl border border-white/15 text-xs animate-in fade-in slide-in-from-right-4 duration-300">
           <div className="flex flex-col">
-            <span className="font-bold text-slate-900 leading-tight">Need help? Chat with us</span>
-            <span className="text-[11px] text-emerald-700 font-semibold">{SITE_CONFIG.whatsappDisplayNumber}</span>
+            <span className="font-bold text-white leading-tight">Need help? Chat with us</span>
+            <span className="text-[11px] text-[#25D366] font-bold">{SITE_CONFIG.whatsappDisplayNumber}</span>
           </div>
           <button
             type="button"
             onClick={() => setTooltipDismissed(true)}
-            className="text-slate-400 hover:text-slate-600 p-0.5 rounded-full hover:bg-slate-100 transition-colors ml-1"
+            className="text-slate-400 hover:text-white p-0.5 rounded-full hover:bg-white/10 transition-colors ml-1"
             aria-label="Dismiss message"
           >
             <X className="w-3.5 h-3.5" />
