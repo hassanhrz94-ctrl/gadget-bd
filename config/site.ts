@@ -17,8 +17,8 @@ export const SITE_CONFIG = {
   contact: {
     phone: "01939319336",
     formattedPhone: "+880 1939-319336",
-    email: "support@mygadgetbd.com",
-    facebook: "https://facebook.com/mygadgetbd",
+    email: "dxnaimkhan9632@gmail.com",
+    facebook: "https://www.facebook.com/people/My-Gadget-BD/61595356072362",
     whatsappUrl: `https://wa.me/${WHATSAPP_NUMBER}`,
     address: "Dhaka, Bangladesh",
     deliveryInfo: "Cash on delivery available all over Bangladesh",
