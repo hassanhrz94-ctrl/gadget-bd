@@ -2,21 +2,26 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { CartItem } from "@/components/CartItem";
 import { EmptyCart } from "@/components/EmptyCart";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { formatBDT, SITE_CONFIG } from "@/config/site";
-import { 
-  ShoppingBag, 
-  ArrowLeft, 
-  Trash2, 
-  ShieldCheck, 
-  Truck, 
-  PhoneCall, 
+import {
+  ShoppingBag,
+  ArrowLeft,
+  Trash2,
+  ShieldCheck,
+  Truck,
+  PhoneCall,
   MapPin,
   Sparkles,
-  MessageCircle
+  MessageCircle,
+  Gift,
+  Tag,
+  Zap,
+  FlameKindling
 } from "lucide-react";
 
 export default function CartPage() {
@@ -51,14 +56,13 @@ export default function CartPage() {
   const grandTotal = totalPrice + deliveryFee;
 
   // Prepare full note for WhatsApp including delivery area
-  const fullNotes = `Delivery Area: ${
-    selectedArea === "dhaka" ? "Inside Dhaka (৳60 delivery)" : "Outside Dhaka (৳120 delivery)"
-  }${customerNote.trim() ? `\nCustomer Note: ${customerNote.trim()}` : ""}`;
+  const fullNotes = `Delivery Area: ${selectedArea === "dhaka" ? "Inside Dhaka (৳60 delivery)" : "Outside Dhaka (৳120 delivery)"
+    }${customerNote.trim() ? `\nCustomer Note: ${customerNote.trim()}` : ""}`;
 
   return (
     <div className="min-h-screen py-10 sm:py-16 bg-[#090A10] text-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Navigation & Title */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 mb-8 border-b border-white/10 gap-4">
           <div>
@@ -91,7 +95,7 @@ export default function CartPage() {
 
         {/* Main Cart Layout: 2 Columns on Desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Column: Items List (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
             <div className="flex items-center justify-between text-xs text-slate-400 px-1 font-bold uppercase tracking-wider">
@@ -102,6 +106,77 @@ export default function CartPage() {
             {items.map((item) => (
               <CartItem key={item.product.id} item={item} />
             ))}
+
+            {/* ✨ COMBO OFFER BANNER ✨ */}
+            <div className="relative overflow-hidden rounded-2xl border border-[#FFD000]/40 bg-gradient-to-br from-[#1A1500] via-[#12100A] to-[#0C1A0A] shadow-2xl shadow-[#FFD000]/10">
+              {/* Glowing top line */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FFD000]/70 to-transparent" />
+              {/* Background ambient glow */}
+              <div className="pointer-events-none absolute -top-8 -right-8 w-40 h-40 rounded-full bg-[#FFD000]/10 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-emerald-500/10 blur-3xl" />
+
+              {/* HOT DEAL Badge */}
+              <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#FFD000] text-slate-950 text-[10px] font-black shadow-lg shadow-[#FFD000]/30 animate-pulse">
+                <FlameKindling className="w-3 h-3" />
+                <span>HOT DEAL</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row overflow-hidden">
+                {/* Offer Image */}
+                <div className="relative sm:w-48 shrink-0 h-40 sm:h-auto">
+                  <Image
+                    src="https://i.ibb.co.com/0Ry432QX/offer-image.jpg"
+                    alt="Combo Offer - 3 Items for ৳999 with Free Small Light"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 192px"
+                    priority
+                  />
+                  <div className="absolute inset-0 sm:bg-gradient-to-r sm:from-transparent sm:to-[#12100A]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#12100A] sm:from-transparent to-transparent" />
+                </div>
+
+                {/* Offer Details */}
+                <div className="flex-1 p-5 sm:pl-3 relative z-10">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Zap className="w-3.5 h-3.5 text-[#FFD000] fill-[#FFD000] shrink-0" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#FFD000]">Exclusive Combo Offer</span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-black text-white leading-tight mb-2">
+                    Buy Any <span className="text-[#FFD000]">3 Products</span> &amp; Save Big!
+                  </h3>
+
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="text-2xl font-black text-[#FFD000] drop-shadow-[0_0_10px_rgba(255,208,0,0.4)]">৳999</span>
+                    <span className="text-xs text-slate-500">for 3 items combo</span>
+                  </div>
+
+                  <div className="space-y-1.5 mb-4">
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
+                      <Tag className="w-3.5 h-3.5 text-[#FFD000] shrink-0" />
+                      <span>Get <strong className="text-white">3 items</strong> together for only <strong className="text-[#FFD000]">৳999</strong></span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
+                      <Gift className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span><strong className="text-emerald-400">FREE Small Light</strong> included with this combo!</span>
+                    </div>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent("Hello My Gadget BD,\n\nI want to order the 3-item Combo Offer for ৳999 + FREE Small Light.\n\nPlease confirm my order. Thank you!")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD000] hover:bg-[#ffe14d] text-slate-950 text-xs font-black transition-all hover:-translate-y-0.5 shadow-lg shadow-[#FFD000]/25"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>Claim This Offer on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+            </div>
 
             {/* Quick Assistance Callout */}
             <div className="p-4 rounded-2xl bg-[#10121C] border border-[#25D366]/30 flex items-start gap-3 text-xs text-slate-300 shadow-lg">
@@ -159,11 +234,10 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedArea("dhaka")}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                      selectedArea === "dhaka"
-                        ? "border-[#FFD000] bg-[#FFD000]/15 font-bold text-[#FFD000]"
-                        : "border-white/10 bg-white/5 hover:bg-white/10 text-slate-300"
-                    }`}
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${selectedArea === "dhaka"
+                      ? "border-[#FFD000] bg-[#FFD000]/15 font-bold text-[#FFD000]"
+                      : "border-white/10 bg-white/5 hover:bg-white/10 text-slate-300"
+                      }`}
                   >
                     <div className="font-black">Inside Dhaka</div>
                     <div className="text-[11px] text-slate-400 mt-0.5">৳60 (24-48 hrs)</div>
@@ -172,11 +246,10 @@ export default function CartPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedArea("outside")}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                      selectedArea === "outside"
-                        ? "border-[#FFD000] bg-[#FFD000]/15 font-bold text-[#FFD000]"
-                        : "border-white/10 bg-white/5 hover:bg-white/10 text-slate-300"
-                    }`}
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${selectedArea === "outside"
+                      ? "border-[#FFD000] bg-[#FFD000]/15 font-bold text-[#FFD000]"
+                      : "border-white/10 bg-white/5 hover:bg-white/10 text-slate-300"
+                      }`}
                   >
                     <div className="font-black">Outside Dhaka</div>
                     <div className="text-[11px] text-slate-400 mt-0.5">৳120 (48-72 hrs)</div>
