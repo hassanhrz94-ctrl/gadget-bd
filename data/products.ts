@@ -9,8 +9,8 @@ export const products: Product[] = [
   {
     id: "prod-1",
     name: "Fiber Optic Flower Crystal LED Night Lamp",
-    price: 650,
-    originalPrice: 850,
+    price: 99,
+    originalPrice: 150,
     image: "https://i.ibb.co.com/wr0LZTW8/DSC01993.jpg",
     category: "Ambient Lights",
     shortDescription: "Vibrant glowing optical fiber flower with color-changing LED base.",
@@ -31,8 +31,8 @@ export const products: Product[] = [
   {
     id: "prod-2",
     name: "RGB Halo Ring Suspended Lantern Desk Lamp",
-    price: 1450,
-    originalPrice: 1850,
+    price: 499,
+    originalPrice: 799,
     image: "https://i.ibb.co.com/YB9F3kjB/DSC02032.jpg",
     category: "Ambient Lights",
     shortDescription: "Modern circular RGB halo ring with suspended vintage glowing lantern.",
@@ -53,8 +53,8 @@ export const products: Product[] = [
   {
     id: "prod-3",
     name: "Glass Tube Flameless Pillar Candle Lamp",
-    price: 890,
-    originalPrice: 1200,
+    price: 599,
+    originalPrice: 999,
     image: "https://i.ibb.co.com/7tq3MNFn/DSC01985.jpg",
     category: "Ambient Lights",
     shortDescription: "Elegant clear glass cylinder electronic candle with spiral fairy lights.",
